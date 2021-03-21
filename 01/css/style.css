@@ -1,0 +1,429 @@
+/** { border: 1px solid lightblue; }*/
+
+html { scroll-behavior: smooth; }
+
+#wrap {
+    background-color: #fff;
+    min-width: 1200px;
+}
+.inner {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/*header*/
+header {
+    height: 136px;
+    background-color: #171717;
+    font-family: Metropolis;
+    font-weight: 300;
+/*    font-size: 24px;*/
+    font-size: 22px;
+}
+#logo {
+    float: left; padding: 46px 0;
+    width: 338px; height: 44px;
+    background-image: url(../images/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#icon {
+    display: none;
+    float: right;
+    margin-top: 78px;
+    width: 5.2083vw; height: 5.2083vw; /*50px/960px*/
+/*    margin: 0 862px 0 50px;*/
+    background-image: url(../images/ico_symbol_block_invert.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+}
+#icon:hover { transform: rotateZ(360deg); }
+
+/*top menu*/
+header nav {
+    float: right;
+    width: 792px;
+    margin: 54px 0;
+}
+#top_menu {}
+#top_menu li {
+    float: left;
+    width: auto;
+    margin-right: 41px;
+}
+#top_menu li:last-child {
+    margin-right: 0;
+}
+#top_menu li a {
+    color: #fff;
+    text-transform: uppercase;
+}
+#top_menu li a::after {
+    content: ""; display: block;
+    width: 0; height: 2px;
+    background-color: #48b0d9;
+    transition-duration: .5s;
+}
+#top_menu li:hover a::after {
+    width: 100%;
+}
+
+#content {}
+
+/*banner tab*/
+#banner {
+    height: 600px;
+/*    height: 450px;*/
+    background-color: #48b0d9;
+    background-image: url("../images/banner_original.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+/*concept tab (only pc)*/
+#concept .inner {}
+#concept_img {
+    position: relative;
+/*    height: 450px;*/
+    height: 569px;
+    margin: 150px 0 194px; /*194px*/
+    font-family: Noto Sans KR;
+    font-weight: 300;
+}
+#concept_imgbox > li {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 549px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition-duration: .5s;
+/*    opacity: 1;*/
+}
+
+#concept_imgbox li:nth-child(1) { background-image: url("../images/motion_symbol1.png"); }
+#concept_imgbox li:nth-child(2) { background-image: url("../images/motion_symbol2.png"); }
+#concept_imgbox li:nth-child(3) { background-image: url("../images/motion_symbol3.png"); }
+#concept_imgbox li:nth-child(4) { background-image: url("../images/motion_symbol4.png"); }
+#concept_imgbox li:nth-child(5) { background-image: url("../images/motion_symbol5.png"); }
+
+/*
+#concept_imgbox > li::before {
+    position: absolute;
+    padding-right: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+    transition-duration: .5s;
+    z-index: -1;
+    overflow: hidden;
+}
+#concept_imgbox li:nth-child(1)::before {
+    content: ""; display: block;
+    width: 275px; height: 300px;
+    left: 315px; top: 50px;
+    background-image: url(../images/five_img1.jpg);
+}
+
+#concept_imgbox > li::after {
+    text-align: left;
+    font-family: Noto Sans KR;
+    font-weight: 300;
+    line-height: 2;
+    position: absolute;
+    padding-left: 10px;
+    transition-duration: .5s;
+    z-index: -1;
+    overflow: hidden;
+}
+#concept_imgbox li:nth-child(1)::after {
+    content: "도시 지하 공간을 확충하는 도시 계획 방안을 촉진합니다.";
+    display: block;
+    width: 275px; height: 200px;
+    left: 600px; top: 390px;
+}
+*/
+
+#concept_img > div {
+    position: absolute;
+}
+#concept_img p {
+    font-size: 24px;
+    font-weight: 400;
+}
+#concept_img h3 {
+    font-size: 36px;
+    font-weight: 700;
+}
+#concept1 { left: 0; top: 0; }
+#concept1 h3 { color: #0398dd; }
+#concept2 { left: 0; top: 219px; }
+#concept2 h3 { color: #c5253b; }
+#concept3 { left: 0; top: 437px; }
+#concept3 h3 { color: #a9aba9; }
+#concept4 {
+    right: 0; top: 110px;
+    text-align: right;
+}
+#concept4 h3 { color: #75ad9d; }
+#concept5 {
+    right: 0; top: 320px;
+    text-align: right;
+}
+#concept5 h3 { color: #eecc62; }
+
+#concept1:hover #concept_img>div:not(#concept1) { opacity: 0.3; }
+#concept1:hover #concept_imgbox>li:not(#img1) { opacity: 0.3; }
+#concept_img:hover #concept_imgbox>li:nth-child(1)::before { transform: translate(0px, 0); }
+#concept_img:hover #concept_imgbox>li:nth-child(1)::after { transform: translate(0px, 0); }
+
+/*mid menu (only tablet, mobile)*/
+#mid_menu {
+    display: none;
+    margin: 15vw 0; /*144px/960px*/
+}
+#mid_menu ul {
+    margin: 0 6.7708vw; /*65px/960px*/
+}
+#mid_menu li {
+    position: relative;
+    float: left;
+    width: 45%;
+/*    width: 40.2083vw;*/
+    /*386px/960px 43.6458vw*/
+    height: 11.9792vw; /*115px/960px*/
+    margin-bottom: 13.6458vw; /*131px/960px*/
+}
+#mid_menu li:nth-child(1) {
+    margin-right: 6.25vw; /*60px*/
+}
+#mid_menu li:nth-child(3) {
+    margin-right: 6.25vw; /*57px*/
+    margin-bottom: 0;
+}
+#mid_menu li:nth-child(4) { margin-bottom: 0; }
+#mid_menu li a {
+    position: absolute;
+    text-transform: uppercase;
+    color: #48b0d9;
+    font-family: Metropolis;
+    font-weight: 700;
+    font-size: 3.75vw; /*36px:960px(2.25em)*/
+    top: 1.7708vw; /*17px*/
+}
+#mid_menu li::before {
+    content: ""; display: block;
+    position: absolute;
+    border-right: 0.5208vw solid #48b0d9;
+    border-bottom: 0.5208vw solid #48b0d9;
+    width: 37.9167vw;
+    height: 12.0833vw; /*363px,116px*/
+    left: 2.3958vw; /*23px*/
+}
+#mid_menu li::after {
+    content: ""; display: block;
+    position: absolute;
+    background-color: #171717;
+    border-top: 0.5208vw solid #48b0d9; /*5px*/
+    width: 3.7vw; height: 3.6828vw;
+    /*25sqrt2px, 25sqrt2px*/ /*25px*/
+    transform: translate(38.9vw, 10.4vw) rotateZ(-45deg);
+}
+#mid_menu li a::after {
+    content: ""; display: block;
+    width: 0; height: 0.5208vw;
+    background-color: #48b0d9;
+    transition-duration: .5s;
+}
+#mid_menu li:hover a::after {
+    width: 100%;
+}
+
+/*iframe video*/
+#video iframe {
+    display: block;
+/*    width: 560px; height: 315px;*/
+    width: 996px; height: 560px;
+    margin: 155px auto;
+}
+
+/*footer*/
+footer {
+    background-color: #171717;
+    color: #fff;
+    padding: 45px 0;
+    height: 150px;
+}
+.copy {
+    float: left;
+}
+.copy_logo {
+    float: left;
+    width: 102px;
+    height: 137px;
+    margin-left: 10px;
+    padding-top: 14px;
+    background-image: url(../images/logo_foot.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.copy_txt {
+    float: left;
+    font-family: Noto Sans KR;
+    margin-top: 45px;
+    margin-left: 68px;
+}
+.copy_txt h4 {
+    font-weight: 700;
+    font-size: 1.25em; /*20px*/
+}
+.copy_txt p {
+    font-weight: 300;
+    font-size: 0.75em; /*12px*/
+}
+.seoul_logo {
+    float: right;
+    margin-top: 70px;
+    margin-right: 10px;
+    width: 135px;
+    height: 21px; /*135px,21px*/
+    background-image: url(../images/logo_seoul.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
+}
+
+/*tablet*/
+@media screen and (min-width:510px) and (max-width:780px) {
+    #wrap { min-width: inherit; }
+    .inner { width: 100%; }
+    header {
+        height: auto;
+    }
+    #logo {
+        float: none;
+        width: 60vw;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+    header {
+        font-size: 1.125em;
+    }
+    header nav {
+        float: none;
+        width: 100%;
+        margin: 3% auto;
+        display: none;
+    }
+    #top_menu li {
+        width: 32%;
+        margin-right: 0;
+        padding: 2% 0;
+        text-align: center;
+    }
+    #top_menu li:nth-child(1) { margin-left: 2%; }
+    #top_menu li:nth-child(4) { margin-left: 2%; }
+    #top_menu li a {
+        display: inline-block;
+        width: auto;
+    }
+    #banner {
+        height: 60vw;
+    }
+    #concept { display: none; }
+    #mid_menu {
+        display : block;
+        margin-bottom: 0;
+    }
+    #mid_menu li::after {
+        background-color: #fff;
+        transform: translate(38.8vw, 10.3vw) rotateZ(-45deg);
+    }
+    #video iframe {
+        width: 80vw; height: 45vw;
+        margin: 16.1458vw auto;
+    }
+    footer .inner { width: 90%; }
+    .copy_logo { width: 10.625vw; }
+    .copy_txt { margin-left: 8.125vw; }
+    .seoul_logo { width: 14.0625vw; }
+}
+
+/*mobile*/
+@media screen and (max-width:509px) {
+    #wrap {
+        background-color: #171717;
+        min-width: inherit;
+    }
+    .inner { width: 100%; }
+    header { height: 21.25vw; /*204px/960px*/}
+    header .inner { width: 95%; }
+    #logo {
+        padding: 7.0833vw 0 7.0833vw 6.2083vw; /*68px,50px/960px*/
+        width: 70.5208vw; /*677px/960px*/
+        height: 7.1875vw; /*69px/960px*/
+    }
+    #icon {
+        display: block;
+        margin: 8.125vw 4.2083vw 8.125vw 0; /*78px,50px/960px*/
+    }
+    header nav {
+        display: none;
+        width: 100%;
+        margin: 0 2%;
+    }
+    #top_menu li {
+        width: 32%;
+        margin-right: 0;
+        text-align: center;
+    }
+    #banner {
+        height: 114.5833vw;
+        /*1100px/960px*/
+        background-image: url(../images/mobile_banner.jpg);
+        background-color: rgb(255, 255, 255, 0.04);
+    }
+    #concept { display: none; }
+    #mid_menu { display: block; }
+    #video iframe {
+        width: 89.7917vw; height: 50.5208vw;
+        /*862px,485px/960px*/
+        margin: 15vw auto; /*144px/960px*/
+    }
+    footer {
+        background-color: rgba(255, 255, 255, 0.04);
+        padding: 5.7292vw 0; /*55px*/
+        height: auto;
+    }
+    .copy {
+        float: none;
+    }
+    .copy_logo { display: none; }
+    .copy_txt {
+        float: none;
+        margin: 0 auto; /*198px/960px*/
+        text-align: center;
+    }
+    .copy_txt h4 {
+        font-size: 2.9167vw;
+        padding: 6.5625vw 0 4.2708vw 0;
+        /*28px:960px(1.75em)=x:100vw*/
+        /*63px,41px/960px*/
+    }
+    .copy_txt p {
+        font-size: 2.5vw;
+        line-height: 1.75; /*28px/16px*/
+    }
+    /*24px:960px(1.5em)=x:100vw*/
+    .seoul_logo {
+        float: none;
+        margin: 4.0625vw auto 0; /*39px*/
+        width: 14.1667vw; /*136px*/
+    }
+}

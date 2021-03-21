@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>snow</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script> <!--load p5.js-->
+    <script src="p5js/p5.js"></script>
+    <script src="p5js/p5.sound.min.js"></script>
+    <style>
+        canvas {
+            position: absolute;
+            left: 0; top: 0; right: 0; bottom: 0;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+let cvs;
+let x0, x1, x2, x3, x4, x5, x6;
+let y0, y1, y2, y3, y4, y5, y6;
+let d0, d1, d2, d3, d4, d5, d6;
+let m0, m1, m2, m3, m4, m5, m6;
+let o0, o1, o2, o3, o4, o5, o6;
+let g, t, k, c1, c2;
+let snow;
+//let slider;
+
+function preload() {
+    snow = loadImage('images/20210103_schnee_logo_02.png');
+}
+
+function setup() {
+    cvs = createCanvas(windowWidth, windowHeight);
+    cvs.id('work01');
+    frameRate(60);
+    
+    c1 = 0.05;
+    c2 = 0.05;
+    g = 0.98;
+    // slider= createSlider(0, 100, 10);
+    // slider.position(20, 20);
+    // slider.style('width', '80px');
+    
+    x0 = [0];
+    x1 = [windowWidth/6];
+    x2 = [windowWidth/3];
+    x3 = [windowWidth/2];
+    x4 = [windowWidth*2/3];
+    x5 = [windowWidth*5/6];
+    x6 = [windowWidth];
+    
+    y0 = [random(-150, 0)];
+    y1 = [random(-150, 0)];
+    y2 = [random(-150, 0)];
+    y3 = [random(-150, 0)];
+    y4 = [random(-150, 0)];
+    y5 = [random(-150, 0)];
+    y6 = [random(-150, 0)];
+    
+    d0 = [75];
+    d1 = [75];
+    d2 = [75];
+    d3 = [75];
+    d4 = [75];
+    d5 = [75];
+    d6 = [75];
+    
+    m0 = [15];
+    m1 = [15];
+    m2 = [15];
+    m3 = [15];
+    m4 = [15];
+    m5 = [15];
+    m6 = [15];
+    
+    o0 = [100];
+    o1 = [100];
+    o2 = [100];
+    o3 = [100];
+    o4 = [100];
+    o5 = [100];
+    o6 = [100];
+}
+
+function draw() {
+    background(color(0, 0, 0));
+    
+//    k = slider.value();
+    k = 0.9;
+    t = frameCount%60;
+    
+    if (frameCount%60==0) {
+        append(x0, 0+random(-50, 50));
+        append(y0, random(-150, 0));
+        append(d0, random(50, 100));
+        append(m0, d0[d0.length-1]/5);
+        append(o0, random(50, 150));
+        
+        append(x1, windowWidth/6+random(-50, 50));
+        append(y1, random(-150, 0));
+        append(d1, random(50, 100));
+        append(m1, d1[d1.length-1]/5);
+        append(o1, random(50, 150));
+    
+        append(x2, windowWidth/3+random(-50, 50));
+        append(y2, random(-150, 0));
+        append(d2, random(50, 100));
+        append(m2, d2[d2.length-1]/5);
+        append(o2, random(50, 150));
+        
+        append(x3, windowWidth/2+random(-50, 50));
+        append(y3, random(-150, 0));
+        append(d3, random(50, 100));
+        append(m3, d3[d3.length-1]/5);
+        append(o3, random(50, 150));
+        
+        append(x4, windowWidth*2/3+random(-50, 50));
+        append(y4, random(-150, 0));
+        append(d4, random(50, 100));
+        append(m4, d4[d4.length-1]/5);
+        append(o4, random(50, 150));
+        
+        append(x5, windowWidth*5/6+random(-50, 50));
+        append(y5, random(-150, 0));
+        append(d5, random(50, 100));
+        append(m5, d5[d5.length-1]/5);
+        append(o5, random(50, 150));
+        
+        append(x6, windowWidth+random(-50, 50));
+        append(y6, random(-50, 0));
+        append(d6, random(50, 100));
+        append(m6, d6[d6.length-1]/5);
+        append(o6, random(50, 150));
+    }
+    
+    for (let i=0; i<y1.length; i++) {
+        x0[i] = x0[i] + (k * (mouseX-pmouseX) / m0[i]) * sqrt(t) / 2;
+        y0[i] = y0[i] + c2 * t + (k * (mouseY-pmouseY) / m0[i] + g) * sqrt(t) / 2;
+        
+        x1[i] = x1[i] + (k * (mouseX-pmouseX) / m1[i]) * sqrt(t) / 2;
+        y1[i] = y1[i] + c2 * t + (k * (mouseY-pmouseY) / m1[i] + g) * sqrt(t) / 2;
+        
+        x2[i] = x2[i] + (k * (mouseX-pmouseX) / m2[i]) * sqrt(t) / 2;
+        y2[i] = y2[i] + c2 * t + (k * (mouseY-pmouseY) / m2[i] + g) * sqrt(t) / 2;
+        
+        x3[i] = x3[i] + (k * (mouseX-pmouseX) / m3[i]) * sqrt(t) / 2;
+        y3[i] = y3[i] + c2 * t + (k * (mouseY-pmouseY) / m3[i] + g) * sqrt(t) / 2;
+        
+        x4[i] = x4[i] + (k * (mouseX-pmouseX) / m4[i]) * sqrt(t) / 2;
+        y4[i] = y4[i] + c2 * t + (k * (mouseY-pmouseY) / m4[i] + g) * sqrt(t) / 2;
+        
+        x5[i] = x5[i] + (k * (mouseX-pmouseX) / m5[i]) * sqrt(t) / 2;
+        y5[i] = y5[i] + c2 * t + (k * (mouseY-pmouseY) / m5[i] + g) * sqrt(t) / 2;
+        
+        x6[i] = x6[i] + (k * (mouseX-pmouseX) / m6[i]) * sqrt(t) / 2;
+        y6[i] = y6[i] + c2 * t + (k * (mouseY-pmouseY) / m6[i] + g) * sqrt(t) / 2;
+        
+//        rotateY(millis() / 1000);
+        
+//        fill(color(255, 255, 255, o0[i]));
+//        noStroke();
+//        circle(x0[i], y0[i], d0[i]);
+//        
+//        fill(color(255, 255, 255, o1[i]));
+//        noStroke();
+//        circle(x1[i], y1[i], d1[i]);
+//        
+//        fill(color(255, 255, 255, o2[i]));
+//        noStroke();
+//        circle(x2[i], y2[i], d2[i]);
+//        
+//        fill(color(255, 255, 255, o3[i]));
+//        noStroke();
+//        circle(x3[i], y3[i], d3[i]);
+//        
+//        fill(color(255, 255, 255, o4[i]));
+//        noStroke();
+//        circle(x4[i], y4[i], d4[i]);
+//        
+//        fill(color(255, 255, 255, o5[i]));
+//        noStroke();
+//        circle(x5[i], y5[i], d5[i]);
+//        
+//        fill(color(255, 255, 255, o6[i]));
+//        noStroke();
+//        circle(x6[i], y6[i], d6[i]);
+        
+//        tint(255, o0[i]);
+        image(snow, x0[i], y0[i], d0[i], d0[i]);
+//        tint(255, o1[i]);
+        image(snow, x1[i], y1[i], d1[i], d1[i]);
+//        tint(255, o2[i]);
+        image(snow, x2[i], y2[i], d2[i], d2[i]);
+//        tint(255, o3[i]);
+        image(snow, x3[i], y3[i], d3[i], d3[i]);
+//        tint(255, o4[i]);
+        image(snow, x4[i], y4[i], d4[i], d4[i]);
+//        tint(255, o5[i]);
+        image(snow, x5[i], y5[i], d5[i], d5[i]);
+//        tint(255, o6[i]);
+        image(snow, x6[i], y6[i], d6[i], d6[i]);
+    }
+}
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
