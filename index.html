@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MEWSE's media palette</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function on() {
+            var a = document.getElementById("logo");
+            var b = document.getElementById("banner");
+            var c = document.getElementById("left");
+            var d = document.getElementById("content");
+            var e = document.getElementById("copy");
+            a.classList.toggle("on");
+            b.classList.toggle("on");
+            c.classList.toggle("on");
+            d.classList.toggle("on");
+            e.classList.toggle("on");
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <a href="index.html"><div id="logo"></div></a>
+        </header>
+        <section id="banner">
+            <div id="typo">
+                <p>mewse's</p>
+                <p>color</p>
+                <p>palette</p>
+            </div>
+            <div id="roll">
+                <script>
+                    let input = "";
+                    for(var i=0 ; i<36 ; i++) {
+                        input += "<div class='side'>";
+//                        input += i;
+                        input += "</div>";
+                    }
+                    document.getElementById("roll").innerHTML = input;
+                </script>
+            </div>
+        </section>
+        <aside id="left" onclick="on()"></aside>
+        <section id="content">
+            <ul id="content_list" class="clear">
+                <li><a href="01.html">2021 sbau</a></li>
+                <li><a href="02.html">felt coffee</a></li>
+<!--                <li><a href="#">3</a></li>-->
+                <li><a href="04.html">p5.js</a></li>
+                <li><a href="05.html">others</a></li>
+                <li><a href="index.html">MEWSE</a></li>
+            </ul>
+        </section>
+        <footer>
+            <div id="copy">
+                <p><span>copyright 2021</span></p>
+                <p><span>cheonjihyun</span></p>
+                <p><span>all rights reserved.</span></p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        var list = document.querySelectorAll(".side");
+        var wall = [];
+        var degree = [];
+//        var w = document.querySelector("#roll > div").style.width;
+        var radius = 50/(Math.tan(Math.PI/18));
+        for(var i=0 ; i<36 ; i++) {
+            degree[i] = 10*i-5;
+        }
+        for (var i=0 ; i<36 ; i++) {
+            wall[i] = new Object();
+            wall[i] = {
+                degree: degree[i],
+                radian: function() {return Math.PI*this.degree/180},
+                x: function() {return radius*(Math.sin(this.radian()))},
+                z: function() {return radius*(Math.cos(this.radian()))}
+            };
+        }
+       
+        for(var i=0 ; i<36 ; i++) {
+            list[i].style.transform = `translate3d(${wall[i].x()}px, 0, ${wall[i].z()}px) rotate3d(0, 1, 0, ${wall[i].degree}deg)`;
+            list[i].style.backgroundColor = "hsla("+(10*i)+", 18%, 75%, 0.85)";
+//            list[i].onmouseover = function darken() {
+//                list[i].style.backgroundColor = "hsla("+(10*i)+", 18%, 75%, 0.85)";
+//            }
+        }
+        
+        document.getElementById("banner").onmouseover = function roll1() {
+            document.getElementById("roll").style.transform = "perspective(500px) translateX(50%) translateY(10%) translateZ(-300px) rotateX(0)";
+            for(var i=0 ; i<36 ; i++) {
+                wall[i].degree += 10;
+                list[i].style.transform = `translate3d(${wall[i].x()}px, 0, ${wall[i].z()}px) rotate3d(0, 1, 0, ${wall[i].degree}deg)`;
+            }
+        };
+        document.getElementById("banner").onmouseout = function roll2() {
+            document.getElementById("roll").style.transform = "perspective(500px) translateX(50%) translateZ(-500px) rotateX(-90deg)";
+        };
+        
+//        var degree = [];
+//        var radian = [];
+//        const radius = 50/(Math.tan(Math.PI/18));
+//        var x = [];
+//        var z = [];
+//        for(var i=0 ; i<36 ; i++) {
+//            degree[i] = 10*i-5;
+//            radian[i] = Math.PI*degree[i]/180;
+//            x[i] = radius*Math.tan(radian[i]);
+//            z[i] = radius/(Math.cos(radian[i]));
+//        }
+//        var list = document.querySelectorAll(".side");
+//        console.log(list);
+//        function back() {
+//            for(var i=0 ; i<list.length ; i++) {
+//                list[i].style.transform = `translate3d(${x[i]}px, 0, ${z[i]}px) rotate3d(0, 1, 0, -${degree[i]}deg)`;
+//            }
+//        }
+//        
+//        function roll() {
+//            
+//            for(var i=0 ; i<list.length-1 ; i++) {
+//                list[i].style.transform = `translate3d(${x[i+1]}px, 0, ${z[i+1]}px) rotate3d(0, 1, 0, -${degree[i+1]}deg)`;
+//            }
+////            list[i].style.transform = `translate3d(${x[i+1]}px, 0, ${z[i+1]}px) rotate3d(0, 1, 0, -${degree[i+1]}deg)`;
+//        }
+    </script>
+</body>
+</html>
